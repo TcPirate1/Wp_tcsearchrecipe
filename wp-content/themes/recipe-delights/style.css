@@ -1,0 +1,159 @@
+/*
+Theme Name: Recipe Delights
+Theme URI:  https://blossomthemes.com/wordpress-themes/recipe-delights/
+Description: Recipe Delights is a free recipe WordPress theme designed for building an engaging and professional food and recipe website. This theme is compatible with the Delicious Recipes plugin, which provides various features that streamline the process of creating and sharing your recipes with your audience. This mobile-friendly theme is SEO-optimized to boost your recipe's visibility on search engine rankings. Recipe Delights is speed-optimized to ensure fast site loading and better rankings on search engines. With its pre-defined Instagram section, you can easily exhibit your foodie snaps and increase your follower growth. The theme also incorporates newsletter integration, helping you increase your email subscribers and build an enduring relationship with your readers. Recipe Delights is translation-ready, RTL-ready, and fully compatible with WooCommerce. Check the demo at https://blossomthemes.com/theme-demo/?theme=recipe-delights, documentation at https://docs.blossomthemes.com/blossom-recipe/, and get support at https://blossomthemes.com/support-ticket/. 
+Author: Blossom Themes
+Author URI: https://blossomthemes.com/
+Template: blossom-recipe
+Version: 1.0.0
+Requires at least: 4.7
+Requires PHP: 5.6
+Tested up to: 6.2
+Text Domain:  recipe-delights
+License: GNU General Public License v3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: blog, one-column, two-columns, right-sidebar, left-sidebar, footer-widgets, custom-background, custom-header, custom-menu, custom-logo, featured-images, threaded-comments, full-width-template, rtl-language-support, translation-ready, theme-options, e-commerce, food-and-drink
+*/
+
+/*==========================
+HEADER LAYOUT THREE
+==========================*/
+:root {
+    --primary-color: #c94f68;
+    --primary-font: 'Lato', sans-serif;
+    --secondary-font: 'Bitter', serif;
+}
+
+.header-three .header-t {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.header-three .header-t .container {
+    display: flex;
+    flex: 1;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-three .header-t .main-navigation {
+    order: 2;
+    display: flex;
+    flex: auto;
+    justify-content: center;
+}
+
+.header-three .main-navigation ul li a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.header-three .main-navigation ul ul li a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.header-three .main-navigation ul li .submenu-toggle {
+    top: 22px;
+}
+
+.header-three .main-navigation ul ul li .submenu-toggle {
+    top: 17px;
+}
+
+.header-three .header-t .header-social-icons {
+    display: flex;
+    flex: auto;
+    padding: 17px 0;
+}
+
+.header-three .header-t .search-wrap {
+    order: 3;
+    display: flex;
+    flex: auto;
+    justify-content: flex-end;
+    padding: 17px 0;
+}
+
+@media only screen and (max-width: 1024px) {
+    .header-three .header-t .main-navigation .toggle-button {
+        margin: 0 auto 0 0;
+    }
+}
+
+
+/*=========================
+SLIDER LAYOUT Five
+=========================*/
+
+
+:is(.site-banner:is(.slider-five, .slider-six), .recipe-index-section) :is(.recipe-item-meta, .item-meta) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+:is(.site-banner:is(.slider-five, .slider-six), .recipe-index-section) :is(.recipe-item-meta, .item-meta)>span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.77em;
+    line-height: 1.4;
+}
+
+:is(.site-banner:is(.slider-five, .slider-six), .recipe-index-section) :is(.banner-title, .title) {
+    margin-bottom: 12px;
+    text-align: center;
+    font-size: 1.22em;
+    line-height: 1.45;
+    margin-top: 0;
+}
+
+:is(.site-banner.slider-five, .recipe-index-section) .recipe-meta-data {
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.site-banner.slider-five .recipe-meta-data {
+    margin-top: -25px;
+
+}
+
+:is(.site-banner.slider-five, .recipe-index-section) :is(.banner-title, .title) a {
+    color: #000000;
+}
+
+:is(.site-banner.slider-five, .recipe-index-section) :is(.banner-title, .title) a:hover {
+    color: var(--primary-color);
+}
+
+.site-banner.slider-five .banner-slider .slider-item {
+    display: block;
+}
+
+.main-header .site-branding:not(.has-logo-text) {
+    align-items: center;
+}
+
+.btn-link::after,
+.readmore-btn .more-button::after {
+    top: 5px;
+}
+
+.cook-time svg.icon,
+.cook-difficulty svg.icon {
+    fill: var(--primary-color);
+}
+
+.dr-most-popular-rcp .dr-mst-pop-details .dr-mst-pop-title {
+    line-height: 1.6;
+}
+
+.site-footer .widget .dr-mst-pop-meta {
+    color: #fff;
+}
+
+.list-view .article-group .article-wrap .entry-title {
+    line-height: 1.5;
+}
