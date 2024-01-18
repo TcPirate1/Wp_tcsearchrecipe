@@ -7,6 +7,19 @@
  * @package recipes_blog
  */
 
+require_once('vendor/autoload.php');
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+// Will throw exception if no .env file is found.
+
+$spoonacular_api_key = getenv('SPOONACULAR_API_KEY');
+// Fetch random recipe data
+$url = "https://api.spoonacular.com/recipes/random?apiKey=$spoonacular_api_key";
+$response = wp_remote_get($url);
+$body = wp_remote_retrieve_body($response);
+$data = json_decode($body, true);
+
 if ( ! defined( 'RECIPES_BLOG_VERSION' ) ) {
 	define( 'RECIPES_BLOG_VERSION', '1.0.0' );
 }

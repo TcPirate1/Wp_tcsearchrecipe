@@ -6,8 +6,12 @@
 
 ## Theme
 
-Blossom-recipe -> Delicious Recipes
+Recipes-blog
 
-## Plugins
+## Repo add-ons
 
-Update when needed.
+[Update when needed.](https://github.com/vlucas/phpdotenv) for managing environment variables.
+
+## .env.example
+
+List of environment variables that need to be set. Create your own .env file and set the values.
