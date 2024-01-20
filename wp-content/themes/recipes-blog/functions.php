@@ -7,19 +7,6 @@
  * @package recipes_blog
  */
 
-require_once('vendor/autoload.php');
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-// Will throw exception if no .env file is found.
-
-$spoonacular_api_key = getenv('SPOONACULAR_API_KEY');
-// Fetch random recipe data
-$url = "https://api.spoonacular.com/recipes/random?apiKey=$spoonacular_api_key";
-$response = wp_remote_get($url);
-$body = wp_remote_retrieve_body($response);
-$data = json_decode($body, true);
-
 if ( ! defined( 'RECIPES_BLOG_VERSION' ) ) {
 	define( 'RECIPES_BLOG_VERSION', '1.0.0' );
 }
@@ -226,61 +213,3 @@ require get_template_directory() . '/theme-library/getting-started/getting-start
 
 
 
-/**
- * GET STRAT FUNCTION
- */
-
-function recipes_blog_getpage_css($hook) {
-	wp_enqueue_script( 'recipes-blog-admin-script', get_template_directory_uri() . '/resource/js/recipes-blog-admin-notice-script.js', array( 'jquery' ) );
-    wp_localize_script( 'recipes-blog-admin-script', 'recipes_blog_ajax_object',
-        array( 'ajax_url' => admin_url( 'admin-ajax.php' ) )
-    );
-    wp_enqueue_style( 'recipes-blog-notice-style', get_template_directory_uri() . '/resource/css/notice.css' );
-}
-
-add_action( 'admin_enqueue_scripts', 'recipes_blog_getpage_css' );
-
-
-add_action('wp_ajax_recipes_blog_dismissable_notice', 'recipes_blog_dismissable_notice');
-function recipes_blog_switch_theme() {
-    delete_user_meta(get_current_user_id(), 'recipes_blog_dismissable_notice');
-}
-add_action('after_switch_theme', 'recipes_blog_switch_theme');
-function recipes_blog_dismissable_notice() {
-    update_user_meta(get_current_user_id(), 'recipes_blog_dismissable_notice', true);
-    die();
-}
-
-function recipes_blog_deprecated_hook_admin_notice() {
-
-    $dismissed = get_user_meta(get_current_user_id(), 'recipes_blog_dismissable_notice', true);
-    if ( !$dismissed) { ?>
-        <div class="getstrat updated notice notice-success is-dismissible notice-get-started-class">
-	    	
-	    	<div class="at-admin-content" ><h2><?php esc_html_e('Welcome to Recipes Blog', 'recipes-blog'); ?></h2>
-                <p><?php _e('Explore the features of our Pro Theme and take your recipes journey to the next level.', 'recipes-blog'); ?></p>
-                <p ><?php _e('Get Started With Theme By Clicking On Getting Started.', 'recipes-blog'); ?><p>
-                <div style="display: flex; justify-content: center;">
-
-	        	<a class="admin-notice-btn button button-primary button-hero" href="<?php echo esc_url( admin_url( 'themes.php?page=recipes-blog-getting-started' )); ?>"><?php esc_html_e( 'Get started', 'recipes-blog' ) ?></a>
-                    <a  class="admin-notice-btn button button-primary button-hero" target="_blank" href="https://demo.asterthemes.com/recipes-blog/"><?php esc_html_e('View Demo', 'recipes-blog') ?></a>
-                    <a  class="admin-notice-btn button button-primary button-hero" target="_blank" href="https://asterthemes.com/products/recipes-bloggers-wordpress-theme?_pos=1&_psq=reci&_ss=e&_v=1.0"><?php esc_html_e('Buy Now', 'recipes-blog') ?></a>
-                </div>
-            </div>
-            <div class="at-admin-image">
-	    		<img style="width: 100%;max-width: 320px;line-height: 40px;display: inline-block;vertical-align: top;border: 2px solid #ddd;border-radius: 4px;" src="<?php echo esc_url(get_stylesheet_directory_uri()) .'/screenshot.png'; ?>" />
-	    	</div>
-        </div>
-    <?php }
-}
-
-add_action( 'admin_notices', 'recipes_blog_deprecated_hook_admin_notice' );
-
-
-//Admin Notice For Getstart
-function recipes_blog_ajax_notice_handler() {
-    if ( isset( $_POST['type'] ) ) {
-        $type = sanitize_text_field( wp_unslash( $_POST['type'] ) );
-        update_option( 'dismissed-' . $type, TRUE );
-    }
-}
