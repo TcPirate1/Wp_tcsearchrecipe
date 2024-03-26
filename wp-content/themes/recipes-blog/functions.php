@@ -248,10 +248,21 @@ function publish_random_recipe() {
     }
 }
 
-// Schedule the event to run daily
-if (!wp_next_scheduled('publish_random_recipe_event')) {
-    wp_schedule_event(strtotime('16:00:00'), 'daily', 'publish_random_recipe_event');
+// // Schedule the event to run daily
+// if (!wp_next_scheduled('publish_random_recipe_event')) {
+//     wp_schedule_event(strtotime('16:00:00'), 'daily', 'publish_random_recipe_event');
+// }
+
+// // Hook the event to the function
+// add_action('publish_random_recipe_event', 'publish_random_recipe');
+if (!wp_next_scheduled('test_event')) {
+    wp_schedule_event(time(), 'every_minute', 'test_event');
 }
 
-// Hook the event to the function
-add_action('publish_random_recipe_event', 'publish_random_recipe');
+// Hook the event to a test function
+add_action('test_event', 'test_function');
+
+// Test function
+function test_function() {
+    error_log('Test event triggered!');
+}
