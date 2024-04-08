@@ -14,6 +14,8 @@ require get_template_directory() . '/theme-library/customizer/active-callback.ph
 
 // Custom Controls.
 require get_template_directory() . '/theme-library/customizer/custom-controls/custom-controls.php';
+// Icon Controls.
+require get_template_directory() . '/theme-library/customizer/custom-controls/icon-control.php';
 
 function recipes_blog_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';

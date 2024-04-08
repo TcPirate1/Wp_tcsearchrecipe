@@ -4613,4 +4613,58 @@ readers do not read off random characters that represent icons */
 .fa,
 .fas {
   font-family: 'Font Awesome 5 Free';
-  font-weight: 900; }
+  font-weight: 900; 
+}
+.selecting-icon {
+  background: #fff;
+  height: 45px;
+  width: 40%;
+  line-height: 45px;
+  padding: 0px 0px;
+  border-radius: 7px;
+  text-align: center;
+  border: 1px solid #000;
+  font-size: 28px;
+}
+i.fa.fa-angle-down {
+  margin-left: 1em;
+  border: 1px solid #000;
+  padding: 1px 6px;
+  border-radius: 20px;
+  box-shadow: 1px 1px #000;
+}
+ul.icon-list.clearfix {
+  height: 215px;
+  overflow-y: scroll;
+  font-size: 18px;
+  border: 1px solid #EEE;
+  background: #fff;
+  border-right: 0;
+  border-top: 0;
+  padding-bottom: 4%;
+  display: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.icon-list li {
+  float: left;
+  margin: 2% 2% 0;
+  height: 40px;
+  width: 43%;
+  text-align: center;
+  line-height: 34px;
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+
+span.recipes-blog-social-class {
+  display: none;
+}
+.social-icon-search i.fas.fa-search {
+  float: right;
+  position: relative;
+  margin-top: -24px;
+  margin-right: 16px;
+}

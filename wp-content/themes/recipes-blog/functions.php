@@ -97,19 +97,18 @@ function recipes_blog_widgets_init() {
 	);
 
 	// Regsiter 4 footer widgets.
-	register_sidebars(
-		4,
-		array(
-			/* translators: %d: Footer Widget count. */
-			'name'          => esc_html__( 'Footer Widget %d', 'recipes-blog' ),
-			'id'            => 'footer-widget',
-			'description'   => esc_html__( 'Add widgets here.', 'recipes-blog' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h6 class="widget-title"><span>',
-			'after_title'   => '</span></h6>',
-		)
-	);
+	$recipes_blog_footer_widget_column = get_theme_mod('recipes_blog_footer_widget_column','4');
+	for ($i=1; $i<=$recipes_blog_footer_widget_column; $i++) {
+		register_sidebar( array(
+			'name' => __( 'Footer  ', 'recipes-blog' )  . $i,
+			'id' => 'recipes-blog-footer-widget-' . $i,
+			'description' => __( 'The Footer Widget Area', 'recipes-blog' )  . $i,
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<div class="widget-header"><h4 class="widget-title">',
+			'after_title' => '</h4></div>',
+		) );
+	}
 }
 add_action( 'widgets_init', 'recipes_blog_widgets_init' );
 
@@ -211,58 +210,5 @@ if ( class_exists( 'WooCommerce' ) ) {
 */
 require get_template_directory() . '/theme-library/getting-started/getting-started.php';
 
-// Function to fetch and publish a random recipe
-function publish_random_recipe() {
-    // Spoonacular API URL
-    $api_url = 'https://api.spoonacular.com/recipes/random';
 
-    // Your Spoonacular API Key
-    $api_key = 'YOUR_SPOONACULAR_API_KEY';
 
-    // Construct the API request URL
-    $request_url = $api_url . '?apiKey=' . $api_key;
-
-    // Make the API request
-    $response = wp_remote_get($request_url);
-
-    // Check if the request was successful
-    if (is_array($response) && !is_wp_error($response)) {
-        // Decode the JSON response
-        $data = json_decode($response['body'], true);
-
-        // Extract relevant information (e.g., recipe title and instructions)
-        $recipe_title = $data['recipes'][0]['title'];
-        $recipe_instructions = $data['recipes'][0]['instructions'];
-
-        // Create a new post
-        $new_post = array(
-            'post_title'   => $recipe_title,
-            'post_content' => $recipe_instructions,
-            'post_status'  => 'publish',
-            'post_author'  => 1, // Change the author ID as needed
-            'post_category' => array(1), // Change the category ID as needed
-        );
-
-        // Insert the post into the database
-        $post_id = wp_insert_post($new_post);
-    }
-}
-
-// // Schedule the event to run daily
-// if (!wp_next_scheduled('publish_random_recipe_event')) {
-//     wp_schedule_event(strtotime('16:00:00'), 'daily', 'publish_random_recipe_event');
-// }
-
-// // Hook the event to the function
-// add_action('publish_random_recipe_event', 'publish_random_recipe');
-if (!wp_next_scheduled('test_event')) {
-    wp_schedule_event(time(), 'every_minute', 'test_event');
-}
-
-// Hook the event to a test function
-add_action('test_event', 'test_function');
-
-// Test function
-function test_function() {
-    error_log('Test event triggered!');
-}

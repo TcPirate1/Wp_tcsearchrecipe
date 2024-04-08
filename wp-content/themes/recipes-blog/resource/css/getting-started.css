@@ -17,12 +17,9 @@
 	overflow: hidden;
 }
 
-a.button.button-primary.solo1,a.button.button-primary.solo2 {
+.intro a.button.button-primary,.intro a.button.button-primary {
     padding: 9px !important;
     margin: 0px 5px 25px 5px;
-}
-.recipes-blog-button-container{
-	text-align: center;
 }
 
 .getting-started .panel {
@@ -34,7 +31,7 @@ a.button.button-primary.solo1,a.button.button-primary.solo2 {
 	-webkit-animation: smoothFade .3s;
 	-o-animation: smoothFade .3s;
 }
-.button.button-primary:hover{
+.intro .button.button-primary:hover{
 	background: #f36f23;
 	border-color: #f36f23;
 }
@@ -140,12 +137,6 @@ a.button.button-primary.solo1,a.button.button-primary.solo2 {
 	border-top: solid 1px #E2E6EC;
 }
 
-#plugins-panel hr {
-	padding-bottom: 0;
-	display: inline-block;
-	width: 100%;
-}
-
 .getting-started .panel h4 {
 	font-size: 20px;
 	font-weight: 700;
@@ -238,30 +229,6 @@ a.button.button-primary.solo1,a.button.button-primary.solo2 {
 	display: inline-block;
 }
 
-.panel-left ul.anchor-nav {
-	padding: 40px;
-	margin-bottom: 50px;
-}
-
-.getting-started ul.anchor-nav li {
-	list-style: none;
-	font-size: 18px;
-	border-bottom-style: solid;
-}
-
-.anchor-nav li a {
-	color: #0095c8;
-}
-
-.back-to-top {
-	text-transform: uppercase;
-	font-size: 11px;
-	color: #999;
-	position: absolute;
-	right: 0;
-	top: 8px;
-}
-
 .getting-started #help-panel h3 {
 	width: 100%;
 	position: relative;
@@ -269,7 +236,7 @@ a.button.button-primary.solo1,a.button.button-primary.solo2 {
 	margin-top: 0;
 }
 
-.getting-started #help-panel h3 .back-to-top {
+.getting-started #help-panel h3 {
 	float: right;
 }
 
@@ -316,11 +283,6 @@ a.button.button-primary.solo1,a.button.button-primary.solo2 {
 .notices {
 	margin: 0;
 	display: none;
-}
-
-#wpbody-content .getting-started .updated,
-#wpbody-content .getting-started .error {
-	margin-top: 2%;
 }
 
 .getting-started .updated + .intro-wrap,
@@ -370,7 +332,7 @@ a.button.button-primary.solo1,a.button.button-primary.solo2 {
 	margin: 0 0 20px 0;
 }
 
-.button.button-primary {
+.intro .button.button-primary {
   	background: #24bdaf;
   	border-color: #24bdaf;
   	color: #fff;
@@ -455,13 +417,13 @@ td {
     font-size: 18px;
 }
 
-a.button.button-primary.solo1 {
+.intro a.button.button-primary {
     background: #ff4719;
     border-color: #ff4719;
 }
-a.button.button-primary.solo2 {
-    background: #ffb200;
-    border-color: #ffb200;
+.intro a.button.button-primary {
+    background: #24bdaf;
+    border-color: #24bdaf;
 }
 
 .getting-started .inline-list li {
@@ -503,14 +465,6 @@ a.button.button-primary.solo2 {
 	box-shadow: none;
 }
 
-.getting-started ul.toc {
-	padding-left: 5%;
-}
-
-.getting-started .toc li {
-	list-style-type: none;
-}
-
 .getting-started .inline-list li a:hover {
 	color: #f36f23;
 }
@@ -527,11 +481,7 @@ a.button.button-primary.solo2 {
 	font-weight: 600;
 }
 
-.getting-started .enter-license {
-	display: inline-block;
-	width: 100%;
-	margin: 3% 0 1% 0;
-}
+
 
 ::-webkit-input-placeholder {
 	color: #C0C4CC;
@@ -549,49 +499,11 @@ a.button.button-primary.solo2 {
 	color: #C0C4CC;
 }
 
-.getting-started .enter-license label {
-	display: inline-block;
-	width: 100%;
-	margin-bottom: 2%;
-}
-
-.getting-started .enter-license .license-key-input {
-	display: inline-block;
-	width: 100%;
-	padding: 10px;
-	margin-bottom: 4%;
-	font-size: 14px;
-	box-shadow: none;
-	border-radius: 4px;
-	border-color: #ccc;
-}
-
-.getting-started .enter-license .submit {
-	display: inline-block;
-	width: 25%;
-	margin: 0;
-	padding: 0;
-}
-
-.getting-started .activate-text {
-	font-size: 14px;
-	line-height: 28px;
-	display: inline-block;
-	margin-right: 5px;
-	color: green;
-}
 
 .getting-started #changelog {
 	display: none;
 }
 
-.getting-started #install-video {
-	display: none;
-}
-
-.getting-started .arrayvideo {
-	padding: 3% 0;
-}
 #updates-panel ul {
 	border-bottom: 1px dotted #ddd;
 	padding: 1% 0 5% 3%;
@@ -618,83 +530,7 @@ h4 .button {
 	vertical-align: middle;
 }
 
-.theme-intro {
-	margin-bottom: 60px;
-	border-bottom: 1px solid #E2E6EC;
-	padding-bottom: 30px;
-}
 
-.theme-intro-left {
-	max-width: 55%;
-	display: inline-block;
-}
-
-.getting-started .theme-intro-left p {
-	font-size: 20px;
-	margin-top: 0;
-	color: #354052;
-}
-
-.theme-intro-left strong {
-	font-weight: 700;
-	color: #0095c8;
-}
-
-.theme-intro-right {
-	float: right;
-	display: inline-block;
-	margin-top: 0;
-}
-
-.theme-intro-right .button-primary {
-	line-height: normal;
-	height: auto;
-	font-size: 16px;
-	padding: 10px 20px;
-	background: #0095c8;
-	text-shadow: none;
-	border-color: #0095c8;
-	box-shadow: none;
-	font-weight: 600;
-}
-
-.theme-intro-right .button-primary:hover, 
-.theme-intro-right .button-primary:focus {
-	border-color: #0095c8;
-	background: none;
-	color: #0095c8;
-}
-
-.theme-intro-right .button-primary svg {
-	font-size: 13px;
-	margin-left: 10px;
-}
-
-.getting-started .theme-list {
-	display: flex;
-	flex: 1;
-	flex-wrap: wrap;
-}
-
-.blossom-theme {
-	width: 30%;
-	margin-right: 5%;
-	margin-top: 5%;
-}
-
-.blossom-theme:nth-child(1), 
-.blossom-theme:nth-child(2), 
-.blossom-theme:nth-child(3) {
-	margin-top: 0;
-}
-
-.blossom-theme:nth-child(3n+3) {
-	margin-right: 0;
-}
-
-.blossom-theme .theme-image img {
-	width: 100%;
-}
 
 .toggle-block {
     border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -716,71 +552,6 @@ h4 .button {
 
 .getting-started .panel .toggle-content p:first-child {
     margin-top: 15px;
-}
-
-@media only screen and (max-width:1100px) {
-	.blossom-theme {
-		width: 47%;
-	}
-
-	.blossom-theme:nth-child(2n+2) {
-		margin-right: 0;
-	}
-
-	.blossom-theme:nth-child(3n+3) {
-		margin-right: 5%;
-	}
-
-	.blossom-theme:nth-child(3) {
-		margin-top: 5%;
-	}
-}
-
-@media only screen and (max-width:768px) {
-	.blossom-theme {
-		width: 100%;
-	}
-
-	.blossom-theme:nth-child(2n+2) {
-		margin-right: 0;
-	}
-
-	.blossom-theme:nth-child(3n+3) {
-		margin-right: 0;
-	}
-
-	.blossom-theme:nth-child(2) {
-		margin-top: 5%;
-	}
-}
-
-.blossom-theme h3 {
-	margin-bottom: 0;
-	font-size: 17px;
-	margin-top: 1.2em;
-}
-
-.theme-list .blossom-theme h3 {
-	margin-top: 30px;
-	font-size: 22px;
-	font-weight: 700;
-	margin-bottom: 0px;
-}
-
-.theme-list .blossom-theme h3 a {
-	color: #0095c8;
-}
-
-.theme-list .blossom-theme h3 a:hover {
-	text-decoration: underline;
-}
-
-#themes-panel {
-	width: 100%;
-}
-
-#themes-panel.visible + .panel-right {
-	display: none;
 }
 
 @media only screen and (max-width:768px) {
@@ -815,114 +586,6 @@ h4 .button {
 		width: 100%;
 		display: block;
 	}
-
-	.getting-started .enter-license .submit {
-		width: 100%;
-	}
-
-	.getting-started .activate {
-		width: 100%;
-		float: none;
-		text-align: left;
-		margin-bottom: 20px;
-	}
-}
-
-.appearance_page_checkout-license #setting-error-tgmpa {
-	display: none;
-}
-
-.recomended-plugin-wrap{
-    margin-left: -4%;
-    margin-top: 60px;
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-
-.recom-plugin-wrap{
-    background: #fff;
-    border: 1px solid #e6e6e6;
-    width: 29.33%;
-    margin-left: 4%;
-    margin-bottom: 40px;
-}
-
-.plugin-img-wrap{
-	margin-top: 0;
-	text-align: center;
-}
-
-.plugin-img-wrap img{
-	border: 0;
-	padding: 17px;
-}
-
-.version-author-info {
-	padding: 0 0 20px 0;
-	font-size: 16px;
-	font-style: normal;
-	text-transform: capitalize;
-	font-weight: 400;
-}
-
-.version-author-info .version {
-	font-size: 14px;
-}
-
-.version-author-info .seperator {
-	display: inline-block;
-	padding-left: 5px;
-	padding-right: 5px;
-}
-
-.version-author-info .author a {
-	color: #0095c8;
-	border-bottom: 1px dotted;
-}
-
-.version-author-info .author a:hover {
-	border-bottom-color: transparent;
-}
-
-.plugin-title-install {
-	position: relative;
-	font-size: 14px;
-	font-weight: 600;
-	margin: 0;
-	line-height: 26px;
-	text-align: center;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	background: rgba(255,255,255,.65);
-	border-top: 1px solid #e6e6e6;
-}
-
-.plugin-title-install .title {
-	font-size: 16px;
-	font-weight: 600;
-	display: block;
-	padding: 10px 15px;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-
-.recom-plugin-wrap:hover .plugin-title-install .title {
-	background: #354052;
-	color: #fff;
-}
-
-.button-wrap{
-	padding: 7px 15px;
-	background: #f6f6f6;
-	display: block;
-	border-bottom: 1px solid #e6e6e6;
-}
-
-.recom-plugin-wrap:hover .plugin-title-install .button-wrap {
-	background: #2D3645;
 }
 
 .getting-started .panel .button-wrap a.button {
@@ -932,40 +595,6 @@ h4 .button {
 	padding: 5px 10px;
 	font-size: 14px;
 	font-weight: 600;
-}
-
-.getting-started .panel .button-wrap a.button:hover {
-	background: #0095c8;
-	border-color: #0095c8;
-	color: #fff;
-}
-
-.getting-started .panel .button-wrap a.button.updating-message {
-	background: #fff;
-	border-color: #E2E6EC;
-	color: #7F8FA4;
-}
-
-.button-primary.updating-message::before {
-    color: #7f8fa4;
-}
-
-.button.updating-message::before, 
-.button.updated-message::before, 
-.button.installed::before, 
-.button.installing::before {
-    margin: 0 5px 0 0;
-}
-
-.update-message p::before, 
-.updating-message p::before, 
-.updated-message p::before, 
-.import-php .updating-message::before, 
-.button.updating-message::before, 
-.button.updated-message::before, 
-.button.installed::before, 
-.button.installing::before {
-	font-size: 18px;
 }
 
 #free-pro-panel .panel-aside {

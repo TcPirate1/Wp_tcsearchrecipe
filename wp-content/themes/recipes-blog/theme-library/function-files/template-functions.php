@@ -38,31 +38,31 @@ add_action( 'wp_head', 'recipes_blog_pingback_header' );
  * Get all posts for customizer Post content type.
  */
 function recipes_blog_get_post_choices() {
-	$choices = array( '' => esc_html__( '--Select--', 'recipes-blog' ) );
+	$recipes_blog_choices = array( '' => esc_html__( '--Select--', 'recipes-blog' ) );
 	$args    = array( 'numberposts' => -1 );
-	$posts   = get_posts( $args );
+	$recipes_blog_posts   = get_posts( $args );
 
-	foreach ( $posts as $post ) {
+	foreach ( $recipes_blog_posts as $post ) {
 		$id             = $post->ID;
 		$title          = $post->post_title;
-		$choices[ $id ] = $title;
+		$recipes_blog_choices[ $id ] = $title;
 	}
 
-	return $choices;
+	return $recipes_blog_choices;
 }
 
 /**
  * Get all pages for customizer Page content type.
  */
 function recipes_blog_get_page_choices() {
-	$choices = array( '' => esc_html__( '--Select--', 'recipes-blog' ) );
-	$pages   = get_pages();
+	$recipes_blog_choices = array( '' => esc_html__( '--Select--', 'recipes-blog' ) );
+	$recipes_blog_pages   = get_pages();
 
-	foreach ( $pages as $page ) {
-		$choices[ $page->ID ] = $page->post_title;
+	foreach ( $recipes_blog_pages as $page ) {
+		$recipes_blog_choices[ $page->ID ] = $page->post_title;
 	}
 
-	return $choices;
+	return $recipes_blog_choices;
 }
 
 if ( ! function_exists( 'recipes_blog_excerpt_length' ) ) :
@@ -98,17 +98,17 @@ if ( ! function_exists( 'recipes_blog_sidebar_layout' ) ) {
 	 * Get sidebar layout.
 	 */
 	function recipes_blog_sidebar_layout() {
-		$sidebar_position      = get_theme_mod( 'recipes_blog_sidebar_position', 'right-sidebar' );
-		$sidebar_position_post = get_theme_mod( 'recipes_blog_post_sidebar_position', 'right-sidebar' );
-		$sidebar_position_page = get_theme_mod( 'recipes_blog_page_sidebar_position', 'right-sidebar' );
+		$recipes_blog_sidebar_position      = get_theme_mod( 'recipes_blog_sidebar_position', 'right-sidebar' );
+		$recipes_blog_sidebar_position_post = get_theme_mod( 'recipes_blog_post_sidebar_position', 'right-sidebar' );
+		$recipes_blog_sidebar_position_page = get_theme_mod( 'recipes_blog_page_sidebar_position', 'right-sidebar' );
 
 		if ( is_single() ) {
-			$sidebar_position = $sidebar_position_post;
+			$recipes_blog_sidebar_position = $recipes_blog_sidebar_position_post;
 		} elseif ( is_page() ) {
-			$sidebar_position = $sidebar_position_page;
+			$recipes_blog_sidebar_position = $recipes_blog_sidebar_position_page;
 		}
 
-		return $sidebar_position;
+		return $recipes_blog_sidebar_position;
 	}
 }
 
@@ -117,25 +117,25 @@ if ( ! function_exists( 'recipes_blog_is_sidebar_enabled' ) ) {
 	 * Check if sidebar is enabled.
 	 */
 	function recipes_blog_is_sidebar_enabled() {
-		$sidebar_position      = get_theme_mod( 'recipes_blog_sidebar_position', 'right-sidebar' );
-		$sidebar_position_post = get_theme_mod( 'recipes_blog_post_sidebar_position', 'right-sidebar' );
-		$sidebar_position_page = get_theme_mod( 'recipes_blog_page_sidebar_position', 'right-sidebar' );
+		$recipes_blog_sidebar_position      = get_theme_mod( 'recipes_blog_sidebar_position', 'right-sidebar' );
+		$recipes_blog_sidebar_position_post = get_theme_mod( 'recipes_blog_post_sidebar_position', 'right-sidebar' );
+		$recipes_blog_sidebar_position_page = get_theme_mod( 'recipes_blog_page_sidebar_position', 'right-sidebar' );
 
-		$sidebar_enabled = true;
+		$recipes_blog_sidebar_enabled = true;
 		if ( is_home() || is_archive() || is_search() ) {
-			if ( 'no-sidebar' === $sidebar_position ) {
-				$sidebar_enabled = false;
+			if ( 'no-sidebar' === $recipes_blog_sidebar_position ) {
+				$recipes_blog_sidebar_enabled = false;
 			}
 		} elseif ( is_single() ) {
-			if ( 'no-sidebar' === $sidebar_position || 'no-sidebar' === $sidebar_position_post ) {
-				$sidebar_enabled = false;
+			if ( 'no-sidebar' === $recipes_blog_sidebar_position || 'no-sidebar' === $recipes_blog_sidebar_position_post ) {
+				$recipes_blog_sidebar_enabled = false;
 			}
 		} elseif ( is_page() ) {
-			if ( 'no-sidebar' === $sidebar_position || 'no-sidebar' === $sidebar_position_page ) {
-				$sidebar_enabled = false;
+			if ( 'no-sidebar' === $recipes_blog_sidebar_position || 'no-sidebar' === $recipes_blog_sidebar_position_page ) {
+				$recipes_blog_sidebar_enabled = false;
 			}
 		}
-		return $sidebar_enabled;
+		return $recipes_blog_sidebar_enabled;
 	}
 }
 
@@ -144,11 +144,11 @@ if ( ! function_exists( 'recipes_blog_get_homepage_sections ' ) ) {
 	 * Returns homepage sections.
 	 */
 	function recipes_blog_get_homepage_sections() {
-		$sections = array(
+		$recipes_blog_sections = array(
 			'banner'  => esc_html__( 'Banner Section', 'recipes-blog' ),
 			'menus-section' => esc_html__( 'Menus Section', 'recipes-blog' ),
 		);
-		return $sections;
+		return $recipes_blog_sections;
 	}
 }
 
@@ -156,15 +156,15 @@ if ( ! function_exists( 'recipes_blog_get_homepage_sections ' ) ) {
  * Renders customizer section link
  */
 function recipes_blog_section_link( $section_id ) {
-	$section_name      = str_replace( 'recipes_blog_', ' ', $section_id );
-	$section_name      = str_replace( '_', ' ', $section_name );
-	$starting_notation = '#';
+	$recipes_blog_section_name      = str_replace( 'recipes_blog_', ' ', $section_id );
+	$recipes_blog_section_name      = str_replace( '_', ' ', $recipes_blog_section_name );
+	$recipes_blog_starting_notation = '#';
 	?>
 	<span class="section-link">
-		<span class="section-link-title"><?php echo esc_html( $section_name ); ?></span>
+		<span class="section-link-title"><?php echo esc_html( $recipes_blog_section_name ); ?></span>
 	</span>
 	<style type="text/css">
-		<?php echo $starting_notation . $section_id; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>:hover .section-link {
+		<?php echo $recipes_blog_starting_notation . $section_id; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>:hover .section-link {
 			visibility: visible;
 		}
 	</style>
@@ -232,11 +232,11 @@ add_action( 'recipes_blog_breadcrumb', 'recipes_blog_breadcrumb', 10 );
  * Add separator for breadcrumb trail.
  */
 function recipes_blog_breadcrumb_trail_print_styles() {
-	$breadcrumb_separator = get_theme_mod( 'recipes_blog_breadcrumb_separator', '/' );
+	$recipes_blog_breadcrumb_separator = get_theme_mod( 'recipes_blog_breadcrumb_separator', '/' );
 
 	$style = '
 		.trail-items li::after {
-			content: "' . $breadcrumb_separator . '";
+			content: "' . $recipes_blog_breadcrumb_separator . '";
 		}'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	$style = apply_filters( 'recipes_blog_breadcrumb_trail_inline_style', trim( str_replace( array( "\r", "\n", "\t", '  ' ), '', $style ) ) );
@@ -251,10 +251,10 @@ add_action( 'wp_head', 'recipes_blog_breadcrumb_trail_print_styles' );
  * Pagination for archive.
  */
 function recipes_blog_render_posts_pagination() {
-	$is_pagination_enabled = get_theme_mod( 'recipes_blog_enable_pagination', true );
-	if ( $is_pagination_enabled ) {
-		$pagination_type = get_theme_mod( 'recipes_blog_pagination_type', 'default' );
-		if ( 'default' === $pagination_type ) :
+	$recipes_blog_is_pagination_enabled = get_theme_mod( 'recipes_blog_enable_pagination', true );
+	if ( $recipes_blog_is_pagination_enabled ) {
+		$recipes_blog_pagination_type = get_theme_mod( 'recipes_blog_pagination_type', 'default' );
+		if ( 'default' === $recipes_blog_pagination_type ) :
 			the_posts_navigation();
 		else :
 			the_posts_pagination();
@@ -279,17 +279,25 @@ add_action( 'recipes_blog_post_navigation', 'recipes_blog_render_post_navigation
 /**
  * Adds footer copyright text.
  */
+
 function recipes_blog_output_footer_copyright_content() {
-	$theme_data = wp_get_theme();
-	$copyright_text    = get_theme_mod( 'recipes_blog_footer_copyright_text' );
-	$copyright_text   .= '<a href="'. esc_url( __( 'https://asterthemes.com/products/free-recipes-wordpress-theme/', 'recipes-blog' ) ) .'" target="_blank">' . esc_html( $theme_data->get( 'Name' ) ) . '</a>' . '&nbsp;' . esc_html__( 'by', 'recipes-blog' ) . '&nbsp;<a target="_blank" href="' . esc_url( $theme_data->get( 'AuthorURI' ) ) . '">' . esc_html( ucwords( $theme_data->get( 'Author' ) ) ) . '</a>';
-	/* translators: %s: WordPress.org URL */
-	$copyright_text .= sprintf( esc_html__( ' | Powered by %s', 'recipes-blog' ), '<a href="' . esc_url( __( 'https://wordpress.org/', 'recipes-blog' ) ) . '" target="_blank">WordPress</a>. ' );
-	?>
-	<span><?php echo wp_kses_post( $copyright_text ); ?></span>
-	<?php
+    $recipes_blog_theme_data = wp_get_theme();
+    $recipes_blog_copyright_text = get_theme_mod('recipes_blog_footer_copyright_text');
+
+    if (!empty($recipes_blog_copyright_text)) {
+        $recipes_blog_text = $recipes_blog_copyright_text;
+    } else {
+        $recipes_blog_default_text = '<a href="'. esc_url(__('https://asterthemes.com/products/free-recipes-wordpress-theme/','recipes-blog')) . '" target="_blank"> ' . esc_html($recipes_blog_theme_data->get('Name')) . '</a>' . '&nbsp;' . esc_html__('by', 'recipes-blog') . '&nbsp;<a target="_blank" href="' . esc_url($recipes_blog_theme_data->get('AuthorURI')) . '">' . esc_html(ucwords($recipes_blog_theme_data->get('Author'))) . '</a>';
+        $recipes_blog_default_text .= sprintf(esc_html__(' | Powered by %s', 'recipes-blog'), '<a href="' . esc_url(__('https://wordpress.org/', 'recipes-blog')) . '" target="_blank">WordPress</a>. ');
+
+        $recipes_blog_text = $recipes_blog_default_text;
+    }
+    ?>
+    <span><?php echo wp_kses_post($recipes_blog_text); ?></span>
+    <?php
 }
-add_action( 'recipes_blog_footer_copyright', 'recipes_blog_output_footer_copyright_content' );
+add_action('recipes_blog_footer_copyright', 'recipes_blog_output_footer_copyright_content');
+
 
 /**
  * GET START FUNCTION
@@ -318,8 +326,8 @@ function recipes_blog_dismissable_notice() {
 
 function recipes_blog_deprecated_hook_admin_notice() {
 
-    $dismissed = get_user_meta(get_current_user_id(), 'recipes_blog_dismissable_notice', true);
-    if ( !$dismissed) { ?>
+    $recipes_blog_dismissed = get_user_meta(get_current_user_id(), 'recipes_blog_dismissable_notice', true);
+    if ( !$recipes_blog_dismissed) { ?>
         <div class="getstrat updated notice notice-success is-dismissible notice-get-started-class">
 	    	
 	    	<div class="at-admin-content" ><h2><?php esc_html_e('Welcome to Recipes Blog', 'recipes-blog'); ?></h2>
@@ -349,3 +357,36 @@ function recipes_blog_ajax_notice_handler() {
         update_option( 'dismissed-' . $type, TRUE );
     }
 }
+if ( ! function_exists( 'recipes_blog_footer_widget' ) ) :
+function recipes_blog_footer_widget() {
+	$recipes_blog_footer_widget_column	= get_theme_mod('recipes_blog_footer_widget_column','4'); 
+		if ($recipes_blog_footer_widget_column == '4') {
+			$recipes_blog_column = '3';
+		} elseif ($recipes_blog_footer_widget_column == '3') {
+			$recipes_blog_column = '4';
+		} elseif ($recipes_blog_footer_widget_column == '2') {
+			$recipes_blog_column = '6';
+		} else{
+			$recipes_blog_column = '12';
+		}
+	if($recipes_blog_footer_widget_column !==''): 
+	?>
+	<div class="dt_footer-widgets">
+		
+    <div class="footer-widgets-column">
+    	<?php
+		$recipes_blog_footer_widget_column = get_theme_mod('recipes_blog_footer_widget_column','4');
+	for ($i=1; $i<=$recipes_blog_footer_widget_column; $i++) { ?>
+        <?php if ( is_active_sidebar( 'recipes-blog-footer-widget-' .$i ) ) : ?>
+            <div class="footer-one-column" >
+                <?php dynamic_sidebar( 'recipes-blog-footer-widget-'.$i); ?>
+            </div>
+        <?php endif; ?>
+        <?php  } ?>
+    </div>
+
+</div>
+	<?php 
+	endif; } 
+endif;
+add_action( 'recipes_blog_footer_widget', 'recipes_blog_footer_widget' );

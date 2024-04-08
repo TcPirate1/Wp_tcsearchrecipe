@@ -36,14 +36,14 @@
 <header id="masthead" class="site-header">
 	<div class="header-main-wrapper">
 		<?php if ( get_theme_mod( 'recipes_blog_enable_topbar', false ) === true ) {
-			$welcome_topbar_text = get_theme_mod( 'recipes_blog_welcome_topbar_text', '' );
+			$recipes_blog_welcome_topbar_text = get_theme_mod( 'recipes_blog_welcome_topbar_text', '' );
 		?>
 			<div class="top-header-part">
 				<div class="asterthemes-wrapper">
 					<div class="bottom-header-part-wrapper">
 						<div class="header-social-inner">
-							<?php if ( ! empty( $welcome_topbar_text ) ) { ?>
-								<span><?php echo esc_html( $welcome_topbar_text ); ?></span>
+							<?php if ( ! empty( $recipes_blog_welcome_topbar_text ) ) { ?>
+								<span><?php echo esc_html( $recipes_blog_welcome_topbar_text ); ?></span>
 							<?php } ?>
 						</div>
 					</div>

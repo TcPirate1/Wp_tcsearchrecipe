@@ -10,7 +10,7 @@
 
 get_header();
 
-$column = get_theme_mod( 'recipes_blog_archive_column_layout', 'column-3' );
+$recipes_blog_column = get_theme_mod( 'recipes_blog_archive_column_layout', 'column-3' );
 ?>
 <main id="primary" class="site-main">
 	<?php if ( have_posts() ) : ?>
@@ -20,7 +20,7 @@ $column = get_theme_mod( 'recipes_blog_archive_column_layout', 'column-3' );
 			the_archive_description( '<div class="archive-description">', '</div>' );
 			?>
 		</header>
-		<div class="recipes-blog-archive-layout grid-layout <?php echo esc_attr( $column ); ?>">
+		<div class="recipes-blog-archive-layout grid-layout <?php echo esc_attr( $recipes_blog_column ); ?>">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :

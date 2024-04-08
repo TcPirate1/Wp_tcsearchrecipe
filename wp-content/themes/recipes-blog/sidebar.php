@@ -47,10 +47,10 @@
 		<section id="tags" class="widget widget_tag_cloud" role="complementary">
 		    <h2 class="widget-title"><?php esc_html_e('Tags', 'recipes-blog'); ?></h2>
 		    <?php
-				$tags = get_tags();
-				if ($tags) {
+				$recipes_blog_tags = get_tags();
+				if ($recipes_blog_tags) {
 				    echo '<div class="tag-cloud">';
-				    foreach ($tags as $tag) {
+				    foreach ($recipes_blog_tags as $tag) {
 				        $tag_link = get_tag_link($tag->term_id);
 				        echo '<a href="' . esc_url($tag_link) . '" style="font-size:' . esc_attr($tag->font_size) . 'px;" class="tag-link">' . esc_html($tag->name) . '</a>';
 				    }
@@ -64,12 +64,12 @@
 		    <h2 class="widget-title"><?php esc_html_e('Recent Posts', 'recipes-blog'); ?></h2>
 		    <ul class="recent-posts-list">
 		        <?php
-		        $recent_posts = get_posts(array(
+		        $recipes_blog_recent_posts = get_posts(array(
 		            'numberposts' => 5, // Adjust the number of posts to display
 		            'post_status' => 'publish',
 		        ));
 
-		        foreach ($recent_posts as $post) :
+		        foreach ($recipes_blog_recent_posts as $post) :
 		            setup_postdata($post);
 		            ?>
 		            <li>

@@ -10,7 +10,7 @@
 
 get_header();
 
-$column = get_theme_mod( 'recipes_blog_archive_column_layout', 'column-3' );
+$recipes_blog_column = get_theme_mod( 'recipes_blog_archive_column_layout', 'column-3' );
 ?>
 <main id="primary" class="site-main">
 
@@ -33,7 +33,7 @@ $column = get_theme_mod( 'recipes_blog_archive_column_layout', 'column-3' );
 		endif;
 		?>
 
-		<div class="recipes-blog-archive-layout grid-layout <?php echo esc_attr( $column ); ?>">
+		<div class="recipes-blog-archive-layout grid-layout <?php echo esc_attr( $recipes_blog_column ); ?>">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :

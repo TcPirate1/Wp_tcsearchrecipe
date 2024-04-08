@@ -2,8 +2,8 @@
 
 function recipes_blog_sanitize_select( $input, $setting ) {
 	$input = sanitize_key( $input );
-	$choices = $setting->manager->get_control( $setting->id )->choices;
-	return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+	$recipes_blog_choices = $setting->manager->get_control( $setting->id )->choices;
+	return ( array_key_exists( $input, $recipes_blog_choices ) ? $input : $setting->default );
 }
 
 function recipes_blog_sanitize_switch( $input ) {
@@ -15,8 +15,8 @@ function recipes_blog_sanitize_switch( $input ) {
 }
 
 function recipes_blog_sanitize_google_fonts( $input, $setting ) {
-	$choices = $setting->manager->get_control( $setting->id )->choices;
-	return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+	$recipes_blog_choices = $setting->manager->get_control( $setting->id )->choices;
+	return ( array_key_exists( $input, $recipes_blog_choices ) ? $input : $setting->default );
 }
 
 function recipes_blog_sanitize_choices( $input, $setting ) {
@@ -27,4 +27,24 @@ function recipes_blog_sanitize_choices( $input, $setting ) {
     } else {
         return $setting->default;
     }
+}
+
+/**
+ * Sanitize HTML input.
+ *
+ * @param string $input HTML input to sanitize.
+ * @return string Sanitized HTML.
+ */
+function recipes_blog_sanitize_html( $input ) {
+    return wp_kses_post( $input );
+}
+
+/**
+ * Sanitize URL input.
+ *
+ * @param string $input URL input to sanitize.
+ * @return string Sanitized URL.
+ */
+function recipes_blog_sanitize_url( $input ) {
+    return esc_url_raw( $input );
 }

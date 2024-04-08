@@ -15,22 +15,22 @@ if ( ! function_exists( 'recipes_blog_posted_on_single' ) ) :
             return;
         }
 
-        $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+        $recipes_blog_time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
         if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-            $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+            $recipes_blog_time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
         }
 
-        $time_string = sprintf(
-            $time_string,
+        $recipes_blog_time_string = sprintf(
+            $recipes_blog_time_string,
             esc_attr( get_the_date( DATE_W3C ) ),
             esc_html( get_the_date() ),
             esc_attr( get_the_modified_date( DATE_W3C ) ),
             esc_html( get_the_modified_date() )
         );
 
-        $posted_on = '<span class="post-date"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><i class="far fa-clock"></i>' . $time_string . '</a></span>';
+        $recipes_blog_posted_on = '<span class="post-date"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><i class="far fa-clock"></i>' . $recipes_blog_time_string . '</a></span>';
 
-        echo $posted_on; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo $recipes_blog_posted_on; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
 endif;
 
@@ -43,22 +43,22 @@ if ( ! function_exists( 'recipes_blog_posted_on' ) ) :
             return;
         }
 
-        $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+        $recipes_blog_time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
         if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-            $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+            $recipes_blog_time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
         }
 
-        $time_string = sprintf(
-            $time_string,
+        $recipes_blog_time_string = sprintf(
+            $recipes_blog_time_string,
             esc_attr( get_the_date( DATE_W3C ) ),
             esc_html( get_the_date() ),
             esc_attr( get_the_modified_date( DATE_W3C ) ),
             esc_html( get_the_modified_date() )
         );
 
-        $posted_on = '<span class="post-date"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><i class="far fa-clock"></i>' . $time_string . '</a></span>';
+        $recipes_blog_posted_on = '<span class="post-date"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><i class="far fa-clock"></i>' . $recipes_blog_time_string . '</a></span>';
 
-        echo $posted_on; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo $recipes_blog_posted_on; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
 endif;
 
@@ -71,9 +71,9 @@ if ( ! function_exists( 'recipes_blog_posted_by_single' ) ) :
         if ( get_theme_mod( 'recipes_blog_single_post_hide_author', false ) ) {
             return;
         }
-        $byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '"><i class="fas fa-user"></i>' . esc_html( get_the_author() ) . '</a>';
+        $recipes_blog_byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '"><i class="fas fa-user"></i>' . esc_html( get_the_author() ) . '</a>';
 
-        echo '<span class="post-author"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo '<span class="post-author"> ' . $recipes_blog_byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
 endif;
 
@@ -85,9 +85,9 @@ if ( ! function_exists( 'recipes_blog_posted_by' ) ) :
         if ( get_theme_mod( 'recipes_blog_post_hide_author', false ) ) {
             return;
         }
-        $byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '"><i class="fas fa-user"></i>' . esc_html( get_the_author() ) . '</a>';
+        $recipes_blog_byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '"><i class="fas fa-user"></i>' . esc_html( get_the_author() ) . '</a>';
 
-        echo '<span class="post-author"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo '<span class="post-author"> ' . $recipes_blog_byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
 endif;
 
@@ -98,17 +98,17 @@ endif;
 if ( ! function_exists( 'recipes_blog_categories_single_list' ) ) :
     function recipes_blog_categories_single_list( $with_background = false ) {
         if ( is_singular( 'post' ) ) {
-            $hide_category = get_theme_mod( 'recipes_blog_single_post_hide_category', false );
+            $recipes_blog_hide_category = get_theme_mod( 'recipes_blog_single_post_hide_category', false );
 
-            if ( ! $hide_category ) {
-                $categories = get_the_category();
-                $separator  = '';
-                $output     = '';
-                if ( ! empty( $categories ) ) {
-                    foreach ( $categories as $category ) {
-                        $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+            if ( ! $recipes_blog_hide_category ) {
+                $recipes_blog_categories = get_the_category();
+                $recipes_blog_separator  = '';
+                $recipes_blog_output     = '';
+                if ( ! empty( $recipes_blog_categories ) ) {
+                    foreach ( $recipes_blog_categories as $category ) {
+                        $recipes_blog_output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $recipes_blog_separator;
                     }
-                    echo trim( $output, $separator );
+                    echo trim( $recipes_blog_output, $recipes_blog_separator );
                 }
             }
         }
@@ -117,17 +117,17 @@ endif;
 
 if ( ! function_exists( 'recipes_blog_categories_list' ) ) :
     function recipes_blog_categories_list( $with_background = false ) {
-        $hide_category = get_theme_mod( 'recipes_blog_post_hide_category', true );
+        $recipes_blog_hide_category = get_theme_mod( 'recipes_blog_post_hide_category', true );
 
-        if ( ! $hide_category ) {
-            $categories = get_the_category();
-            $separator  = '';
-            $output     = '';
-            if ( ! empty( $categories ) ) {
-                foreach ( $categories as $category ) {
-                    $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+        if ( ! $recipes_blog_hide_category ) {
+            $recipes_blog_categories = get_the_category();
+            $recipes_blog_separator  = '';
+            $recipes_blog_output     = '';
+            if ( ! empty( $recipes_blog_categories ) ) {
+                foreach ( $recipes_blog_categories as $category ) {
+                    $recipes_blog_output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $recipes_blog_separator;
                 }
-                echo trim( $output, $separator );
+                echo trim( $recipes_blog_output, $recipes_blog_separator );
             }
         }
     }
@@ -140,14 +140,14 @@ if ( ! function_exists( 'recipes_blog_entry_footer' ) ) :
 	function recipes_blog_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() && is_singular() ) {
-			$hide_tag = get_theme_mod( 'recipes_blog_post_hide_tags', false );
+			$recipes_blog_hide_tag = get_theme_mod( 'recipes_blog_post_hide_tags', false );
 
-			if ( ! $hide_tag ) {
+			if ( ! $recipes_blog_hide_tag ) {
 				/* translators: used between list items, there is a space after the comma */
-				$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'recipes-blog' ) );
-				if ( $tags_list ) {
+				$recipes_blog_tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'recipes-blog' ) );
+				if ( $recipes_blog_tags_list ) {
 					/* translators: 1: list of tags. */
-					printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'recipes-blog' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'recipes-blog' ) . '</span>', $recipes_blog_tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 			}
 		}

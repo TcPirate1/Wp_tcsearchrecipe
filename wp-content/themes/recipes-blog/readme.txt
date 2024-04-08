@@ -4,7 +4,7 @@ Contributors: asterthemes
 Tags: one-column, two-columns, grid-layout, custom-background, custom-logo, custom-colors, custom-header, custom-menu, flexible-header, featured-images, threaded-comments, translation-ready, theme-options, sticky-post, footer-widgets, full-width-template, left-sidebar, right-sidebar, e-commerce, blog, food-and-drink
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.9
+Stable tag: 2.3
 Requires PHP: 7.2
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -79,6 +79,25 @@ Recipes Blog is a digital culinary canvas tailored for food connoisseurs, home c
 
 = 1.9 =
 * Updated Getstart Function.
+
+= 2.0 =
+* Added 404 page settings.
+* Update logo css.
+* Updated Scroll Top reposnive.
+* Updated Top Bar.
+
+= 2.1 =
+* Added Footer column settings.
+* Done Prefixing.
+* Resolved copyright issue.
+
+= 2.2 =
+* Updated getting start function.
+
+= 2.3 =
+* Added Icon Changer Settings.
+* Added footer background color settings.
+* Added footer background image settings.
 
 == Images Screenshot ==
 

@@ -39,3 +39,6 @@ require get_template_directory() . '/theme-library/customizer/theme-options/pagi
 
 // Footer Options.
 require get_template_directory() . '/theme-library/customizer/theme-options/footer-options.php';
+
+// 404 page option.
+require get_template_directory() . '/theme-library/customizer/theme-options/404page-customize-setting.php';

@@ -35,12 +35,12 @@ if ( ! function_exists( 'recipes_blog_header_style' ) ) :
 add_action( 'wp_enqueue_scripts', 'recipes_blog_header_style' );
 function recipes_blog_header_style() {
 	if ( get_header_image() ) :
-	$custom_css = "
+	$recipes_blog_custom_css = "
         .bottom-header-outer-wrapper{
 			background-image:url('".esc_url(get_header_image())."') !important;
 			background-position: center top;
 		}";
-	   	wp_add_inline_style( 'recipes-blog-style', $custom_css );
+	   	wp_add_inline_style( 'recipes-blog-style', $recipes_blog_custom_css );
 	endif;
 }
 endif;

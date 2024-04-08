@@ -10,13 +10,13 @@
 
 function breadcrumb_trail( $args = array() ) {
 
-	$breadcrumb = apply_filters( 'breadcrumb_trail_object', null, $args );
+	$recipes_blog_breadcrumb = apply_filters( 'breadcrumb_trail_object', null, $args );
 
-	if ( ! is_object( $breadcrumb ) ) {
-		$breadcrumb = new Breadcrumb_Trail( $args );
+	if ( ! is_object( $recipes_blog_breadcrumb ) ) {
+		$recipes_blog_breadcrumb = new Breadcrumb_Trail( $args );
 	}
 
-	return $breadcrumb->trail();
+	return $recipes_blog_breadcrumb->trail();
 }
 
 /**
@@ -141,7 +141,7 @@ class Breadcrumb_Trail {
 	public function trail() {
 
 		// Set up variables that we'll need.
-		$breadcrumb    = '';
+		$recipes_blog_breadcrumb    = '';
 		$item_count    = count( $this->items );
 		$item_position = 0;
 
@@ -151,7 +151,7 @@ class Breadcrumb_Trail {
 			// Add 'browse' label if it should be shown.
 			if ( true === $this->args['show_browse'] ) {
 
-				$breadcrumb .= sprintf(
+				$recipes_blog_breadcrumb .= sprintf(
 					'<%1$s class="trail-browse">%2$s</%1$s>',
 					tag_escape( $this->args['browse_tag'] ),
 					$this->labels['browse']
@@ -159,14 +159,14 @@ class Breadcrumb_Trail {
 			}
 
 			// Open the unordered list.
-			$breadcrumb .= sprintf(
+			$recipes_blog_breadcrumb .= sprintf(
 				'<%s class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList">',
 				tag_escape( $this->args['list_tag'] )
 			);
 
 			// Add the number of items and item list order schema.
-			$breadcrumb .= sprintf( '<meta name="numberOfItems" content="%d" />', absint( $item_count ) );
-			$breadcrumb .= '<meta name="itemListOrder" content="Ascending" />';
+			$recipes_blog_breadcrumb .= sprintf( '<meta name="numberOfItems" content="%d" />', absint( $item_count ) );
+			$recipes_blog_breadcrumb .= '<meta name="itemListOrder" content="Ascending" />';
 
 			// Loop through the items and add them to the list.
 			foreach ( $this->items as $item ) {
@@ -202,31 +202,31 @@ class Breadcrumb_Trail {
 				$meta = sprintf( '<meta itemprop="position" content="%s" />', absint( $item_position ) );
 
 				// Build the list item.
-				$breadcrumb .= sprintf( '<%1$s %2$s>%3$s%4$s</%1$s>', tag_escape( $this->args['item_tag'] ), $attributes, $item, $meta );
+				$recipes_blog_breadcrumb .= sprintf( '<%1$s %2$s>%3$s%4$s</%1$s>', tag_escape( $this->args['item_tag'] ), $attributes, $item, $meta );
 			}
 
 			// Close the unordered list.
-			$breadcrumb .= sprintf( '</%s>', tag_escape( $this->args['list_tag'] ) );
+			$recipes_blog_breadcrumb .= sprintf( '</%s>', tag_escape( $this->args['list_tag'] ) );
 
 			// Wrap the breadcrumb trail.
-			$breadcrumb = sprintf(
+			$recipes_blog_breadcrumb = sprintf(
 				'<%1$s role="navigation" aria-label="%2$s" class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb">%3$s%4$s%5$s</%1$s>',
 				tag_escape( $this->args['container'] ),
 				esc_attr( $this->labels['aria_label'] ),
 				$this->args['before'],
-				$breadcrumb,
+				$recipes_blog_breadcrumb,
 				$this->args['after']
 			);
 		}
 
 		// Allow developers to filter the breadcrumb trail HTML.
-		$breadcrumb = apply_filters( 'breadcrumb_trail', $breadcrumb, $this->args );
+		$recipes_blog_breadcrumb = apply_filters( 'breadcrumb_trail', $recipes_blog_breadcrumb, $this->args );
 
 		if ( false === $this->args['echo'] ) {
-			return $breadcrumb;
+			return $recipes_blog_breadcrumb;
 		}
 
-		echo $breadcrumb;
+		echo $recipes_blog_breadcrumb;
 	}
 
 	/* ====== Protected Methods ====== */

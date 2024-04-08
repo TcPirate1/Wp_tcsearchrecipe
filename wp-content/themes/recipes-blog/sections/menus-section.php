@@ -4,14 +4,14 @@ if ( ! get_theme_mod( 'recipes_blog_enable_menus_section', false ) ) {
 	return;
 }
 
-$recipes_blog_args = '';
+$args = '';
 
-recipes_blog_render_service_section( $recipes_blog_args );
+recipes_blog_render_service_section( $args );
 
 /**
  * Render Service Section.
  */
-function recipes_blog_render_service_section( $recipes_blog_args ) { ?>
+function recipes_blog_render_service_section( $args ) { ?>
 	<section id="recipes_blog_trending_section" class="asterthemes-frontpage-section trending-section trending-style-1">
 		<?php
 		if ( is_customize_preview() ) :
@@ -21,29 +21,29 @@ function recipes_blog_render_service_section( $recipes_blog_args ) { ?>
 		<div class="asterthemes-wrapper">
 			<div class="menus-section">
 				<?php
-					$heading_menus_section = get_theme_mod( 'recipes_blog_heading_menus_section', '' );
-					if ( ! empty( $heading_menus_section ) ) { ?>
+					$recipes_blog_heading_menus_section = get_theme_mod( 'recipes_blog_heading_menus_section', '' );
+					if ( ! empty( $recipes_blog_heading_menus_section ) ) { ?>
 
-					<h3><?php echo esc_html( $heading_menus_section ); ?></h3>
+					<h3><?php echo esc_html( $recipes_blog_heading_menus_section ); ?></h3>
 				<?php } ?>
 				<div class="tab">
 			        <?php $recipes_blog_featured_post = get_theme_mod('recipes_blog_menus_number', '');
-			          	for ( $recipes_blog_j = 1; $recipes_blog_j <= $recipes_blog_featured_post; $recipes_blog_j++ ){ ?>
-		          		<button class="tablinks" onclick="recipes_blog_menus_tab(event, '<?php $recipes_blog_main_id = get_theme_mod('recipes_blog_menus_text'.$recipes_blog_j); $recipes_blog_tab_id = str_replace(' ', '-', $recipes_blog_main_id); echo $recipes_blog_tab_id; ?> ')">
-			          	<?php echo esc_html(get_theme_mod('recipes_blog_menus_text'.$recipes_blog_j)); ?></button>
+			          	for ( $j = 1; $j <= $recipes_blog_featured_post; $j++ ){ ?>
+		          		<button class="tablinks" onclick="recipes_blog_menus_tab(event, '<?php $recipes_blog_main_id = get_theme_mod('recipes_blog_menus_text'.$j); $recipes_blog_tab_id = str_replace(' ', '-', $recipes_blog_main_id); echo $recipes_blog_tab_id; ?> ')">
+			          	<?php echo esc_html(get_theme_mod('recipes_blog_menus_text'.$j)); ?></button>
 			        <?php }?>
 		      	</div>
 
-		  	  	<?php for ( $recipes_blog_j = 1; $recipes_blog_j <= $recipes_blog_featured_post; $recipes_blog_j++ ){ ?>
-			        <div id="<?php $recipes_blog_main_id = get_theme_mod('recipes_blog_menus_text'.$recipes_blog_j); $recipes_blog_tab_id = str_replace(' ', '-', $recipes_blog_main_id); echo $recipes_blog_tab_id; ?>"  class="tabcontent">
+		  	  	<?php for ( $j = 1; $j <= $recipes_blog_featured_post; $j++ ){ ?>
+			        <div id="<?php $recipes_blog_main_id = get_theme_mod('recipes_blog_menus_text'.$j); $recipes_blog_tab_id = str_replace(' ', '-', $recipes_blog_main_id); echo $recipes_blog_tab_id; ?>"  class="tabcontent">
 			        	<div class="menus_main_box">
-					        <?php $recipes_blog_args = array(
+					        <?php $args = array(
 								'post_type' => 'post',
 								'post_status' => 'publish',
-								'category_name' =>  get_theme_mod('recipes_blog_menus_category'.$recipes_blog_j),
+								'category_name' =>  get_theme_mod('recipes_blog_menus_category'.$j),
 								'posts_per_page' => 9,
 							); ?>
-						    <?php $recipes_blog_arr_posts = new WP_Query( $recipes_blog_args );
+						    <?php $recipes_blog_arr_posts = new WP_Query( $args );
 						    	if ( $recipes_blog_arr_posts->have_posts() ) :
 						      	while ( $recipes_blog_arr_posts->have_posts() ) :
 						        $recipes_blog_arr_posts->the_post();

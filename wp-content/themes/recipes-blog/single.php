@@ -20,24 +20,24 @@ get_header();
 		do_action( 'recipes_blog_post_navigation' );
 
 		if ( is_singular( 'post' ) ) {
-			$related_posts_label = get_theme_mod( 'recipes_blog_post_related_post_label', __( 'Related Posts', 'recipes-blog' ) );
-			$cat_content_id      = get_the_category( $post->ID )[0]->term_id;
+			$recipes_blog_related_posts_label = get_theme_mod( 'recipes_blog_post_related_post_label', __( 'Related Posts', 'recipes-blog' ) );
+			$recipes_blog_cat_content_id      = get_the_category( $post->ID )[0]->term_id;
 			$args                = array(
-				'cat'            => $cat_content_id,
+				'cat'            => $recipes_blog_cat_content_id,
 				'posts_per_page' => 3,
 			);
 
-			$query = new WP_Query( $args );
+			$recipes_blog_query = new WP_Query( $args );
 
-			if ( $query->have_posts() ) :
+			if ( $recipes_blog_query->have_posts() ) :
 				?>
 				<div class="related-posts">
 					<?php if ( get_theme_mod( 'recipes_blog_post_hide_related_posts', false ) === false ) : ?>
-						<h2><?php echo esc_html( $related_posts_label ); ?></h2>
+						<h2><?php echo esc_html( $recipes_blog_related_posts_label ); ?></h2>
 						<div class="row">
 							<?php
-							while ( $query->have_posts() ) :
-								$query->the_post();
+							while ( $recipes_blog_query->have_posts() ) :
+								$recipes_blog_query->the_post();
 								?>
 								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 									<div class="mag-post-single">

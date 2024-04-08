@@ -4,7 +4,7 @@ Theme URI: https://asterthemes.com/products/free-recipes-wordpress-theme/
 Author: asterthemes
 Author URI: https://asterthemes.com/
 Description: Recipes Blog is a digital culinary canvas tailored for food connoisseurs, home chefs, culinary experts, and anyone deeply passionate about the culinary arts. This theme is a meticulously crafted platform that invites you to explore and share the delectable world of gastronomy. Picture a dedicated space where culinary aficionados can not only present their favorite recipes but also delve into the intricate realm of cooking techniques, flavor profiles, and culinary culture. The Recipes Blog theme provides precisely that - an immersive environment where culinary creativity takes center stage. It's akin to having your own digital kitchen laboratory, where you can experiment, display, and savor your culinary creations with a global audience. However, this theme goes beyond aesthetics; it offers a comprehensive set of features that cater to your culinary aspirations. It facilitates the seamless sharing of your cherished recipes, culinary insights, and gastronomic experiences with an engaged and diverse readership. It's akin to having your very own cooking publication, where you can assume the role of the esteemed chef, educating and delighting your audience with your culinary expertise. The theme's responsive design ensures that your blog exhibits flawless functionality and visual appeal on various devices, be it for leisurely recipe browsing on a laptop or real-time cooking guidance on a tablet in the kitchen. It's akin to having a professional chef guiding your culinary journey, regardless of your location.
-Version: 1.9
+Version: 2.3
 Tested up to: 6.4
 Requires PHP: 7.2
 License: GNU General Public License v3 or later
@@ -1663,6 +1663,7 @@ textarea {
 .left-sidebar .asterthemes-wrapper .asterthemes-page {
 	display: grid;
 	grid-gap: 30px;
+	margin-top: 2em;
 	grid-template-columns: 25% auto;
 	grid-template-areas: "sidebar main";
 }
@@ -2578,6 +2579,44 @@ section.no-results.not-found {
     text-align: center;
     margin-bottom: 30px;
 }
+
+section.not-found {
+    margin-top: 3em;
+    text-align: center;
+    margin-bottom: 7em;
+    margin-left: 21em;
+    margin-right: 0em;
+}
+h2.text-secondary {
+    font-size: 41px;
+    font-weight: 900;
+}
+p.not-para {
+    font-size: 20px;
+}
+.paganot-found-button a {
+    background: #ff6900;
+    border-radius: 11px;
+    padding: 12px 12px;
+    font-weight: 800;
+    color: #fff!important;
+}
+.paganot-found-button a:hover {
+    background: #404040;
+    border-radius: 11px;
+    padding: 12px 12px;
+    color: #fff!important;
+}
+@media (max-width: 1000px){
+	section.not-found {
+	    margin-top: 3em;
+	    text-align: center;
+	    margin-bottom: 7em;
+	    margin-left: 0em;
+	    margin-right: 0em;
+	}
+
+}
 /*--------------------------------------------------------------
 # archive layouts
 --------------------------------------------------------------*/
@@ -2648,6 +2687,7 @@ section.no-results.not-found {
 
 .mag-post-single .mag-post-detail .mag-post-title a {
 	text-decoration: none;
+	word-break: break-word;
 	color: var(--background-color-white);
 	font-size: 24px;
 }
@@ -3751,7 +3791,7 @@ body.no-sidebar div.wp-block-file.alignfull {
 .entry-footer .tags-links a{
 	margin: 10px;
     padding: 5px;
-    border: 1px solid #000;
+    border: 1px solid #fff;
     display: inline-block;
 }
 span.tags-links {
@@ -4413,10 +4453,10 @@ div.wp-block .editor-rich-text__editable code {
 }
 
 body.no-sidebar:not(.asterthemes-boxed-layout) .alignfull {
-	margin-left: calc(50% - 50vw - 10px);
-	margin-right: calc(50% - 50vw - 10px);
-	max-width: 100vw;
-	width: 100vw;
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: 100%;
+    width: 100%;
 }
 
 @media (max-width: 767px) {
@@ -4981,8 +5021,16 @@ nav.breadcrumb-trail ul.trail-items li:last-child::after {
 --------------------------------------------- */
 .widget {
 	margin: 0 0 1.5em;
-	background-color: #1f1f1f;
 	padding: 15px;
+}
+footer#colophon {
+    background-size: 100% 100%;
+}
+.right-sidebar .asterthemes-wrapper .asterthemes-page .widget {
+    background-color: #1f1f1f;
+}
+.left-sidebar .asterthemes-wrapper .asterthemes-page .widget {
+    background-color: #1f1f1f;
 }
 
 .footer-widgets-wrapper .widget{
@@ -5014,6 +5062,7 @@ nav.breadcrumb-trail ul.trail-items li:last-child::after {
 	margin-bottom: 15px;
 	line-height: 1.2;
 	position: relative;
+	border-bottom: 1px solid #fff;
 	font-size: 24px;
 	margin-top: 0;
 	font-weight: 700;
@@ -5095,8 +5144,8 @@ nav.breadcrumb-trail ul.trail-items li:last-child::after {
 	display: inline-block;
 	text-decoration: none;
 	font-size: var(--font-size-small) !important;
-	color: #ff7a00;
-	border: 1px solid #ff7a00;
+	color: #ffffff;
+	border: 1px solid #ffffff;
 	padding: 3px 7px;
 	border-radius: 3px;
 	margin-inline-end: 5px;
@@ -5968,16 +6017,21 @@ body:not(.scroll-up) header.site-header .header-main-wrapper .bottom-header-part
 --------------------------------------------- */
 /* footer CSS start
 --------------------------------------------- */
+.dt_footer-widgets .footer-widgets-column {
+    display: flex;
+    flex-wrap: nowrap; /* Ensures widgets won't wrap to the next line */
+    justify-content: center;
+}
+.footer-one-column {
+    width: 25%;
+}
+
+
 .site-footer {
 	background: #1f1f1f;
 }
 
-.site-footer .site-footer-top .footer-widgets-wrapper {
 
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 -15px;
-}
 
 .site-footer .site-footer-top .footer-widgets-wrapper .footer-widget-single {
 	width: 25%;
@@ -5990,11 +6044,21 @@ body:not(.scroll-up) header.site-header .header-main-wrapper .bottom-header-part
 	.site-footer .site-footer-top .footer-widgets-wrapper .footer-widget-single {
 		width: 50%;
 	}
+	.footer-one-column {
+    	width: 20%;
+	}
 }
 
 @media (max-width: 480px) {
 	.site-footer .site-footer-top .footer-widgets-wrapper .footer-widget-single {
 		width: 100%;
+	}
+	.dt_footer-widgets .footer-widgets-column{
+		display: flow;
+	.footer-one-column {
+	    width: 100%;
+	}
+		}
 	}
 	a.recipes-blog-scroll-to-top{
 		height: 40px!important;

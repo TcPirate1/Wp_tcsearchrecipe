@@ -11,9 +11,9 @@
     padding-right: 30px;
     text-align: center;
 }
-.wp-core-ui .button-primary {
-    background: #2271b1!important;
-    border-color: #2271b1!important;
+.button-primary {
+    background: #2271b1;
+    border-color: #2271b1;
     color: #fff;
     text-decoration: none;
     text-shadow: none;
@@ -38,7 +38,7 @@
     justify-content: center;
 }
 
-.wp-core-ui .button-group.button-hero .button, .wp-core-ui .button.button-hero {
+.button-group.button-hero .button, .wp-core-ui .button.button-hero {
     font-size: 14px;
     min-height: 46px;
     line-height: 3.14285714;

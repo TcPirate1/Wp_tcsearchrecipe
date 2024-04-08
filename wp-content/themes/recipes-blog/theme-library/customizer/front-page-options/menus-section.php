@@ -107,11 +107,11 @@ for ( $j = 1; $j <= $featured_post; $j++ ) {
     	)
     );
 
-    $categories = get_categories();
+    $recipes_blog_categories = get_categories();
         $cat_posts = array();
             $i = 0;
             $cat_posts[]='Select';
-        foreach($categories as $category){
+        foreach($recipes_blog_categories as $category){
             if($i==0){
             $default = $category->slug;
             $i++;
